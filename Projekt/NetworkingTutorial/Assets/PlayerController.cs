@@ -1,50 +1,28 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Networking;
+namespace S3
+{
 
-[RequireComponent(typeof(PlayerMotor))]
-public class PlayerController : MonoBehaviour {
+    public class PlayerController : NetworkBehaviour {
 
-    [SerializeField]
-    private float speed = 5f;
-    [SerializeField]
-    private float lookSensitivity = 3f;
+        void Update()
+        {
 
-    private PlayerMotor motor;
+            if (!isLocalPlayer)
+                return;
 
-     void Start()
-    {
-        motor = GetComponent<PlayerMotor>();
+            float x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
+            float z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
+
+            //Final movement vector
+            transform.Rotate(0, x, 0);
+            transform.Translate(0, 0, z);
+        }
+
+        public override void OnStartLocalPlayer()
+        {
+            GetComponent<MeshRenderer>().material.color = Color.blue;
+        }
     }
 
-     void Update()
-    {
-        //Calculate movement velocity as a 3D vector
-        float _xMov = Input.GetAxisRaw("Horizontal");
-        float _zMov = Input.GetAxisRaw("Vertical");
-
-        Vector3 _movHorizontal = transform.right * _xMov; //(1,0,0)
-        Vector3 _movVertical = transform.forward * _zMov; //(0,0,1)
-
-        //Final movement vector
-        Vector3 _velocity = (_movHorizontal + _movVertical).normalized * speed;
-
-        //Apply movement
-        motor.Move(_velocity);
-
-        //Calculate roatation as a 3D Vector (turning around)
-        float _yRot = Input.GetAxisRaw("Mouse X");
-
-        Vector3 _rotation = new Vector3(0f, _yRot, 0f) * lookSensitivity;
-
-        //Apply rotation
-        motor.Rotation(_rotation);
-
-        //Calculate roatation as a 3D Vector (turning around)
-        float _xRot = Input.GetAxisRaw("Mouse Y");
-
-        Vector3 _cameraRotation = new Vector3(_xRot,0f, 0f) * lookSensitivity;
-
-        //Apply Camerarotation
-        motor.CameraRotation(_cameraRotation);
-    }
 }
