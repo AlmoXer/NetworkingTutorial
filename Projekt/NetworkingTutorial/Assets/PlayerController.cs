@@ -5,6 +5,9 @@ namespace S3
 
     public class PlayerController : NetworkBehaviour {
 
+        public GameObject bulletPrefab;
+        public Transform bulletSpawn;
+
         void Update()
         {
 
@@ -17,11 +20,23 @@ namespace S3
             //Final movement vector
             transform.Rotate(0, x, 0);
             transform.Translate(0, 0, z);
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                Fire();
         }
 
         public override void OnStartLocalPlayer()
         {
             GetComponent<MeshRenderer>().material.color = Color.blue;
+        }
+
+        void Fire()
+        {
+            GameObject bullet = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+
+            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6.0f;
+
+            Destroy(bullet, 2);
         }
     }
 
