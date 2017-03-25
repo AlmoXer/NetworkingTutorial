@@ -21,14 +21,14 @@ Platform assembly: F:\Private Projekte\NetworkingTutorial\Projekt\NetworkingTuto
 Loading F:\Private Projekte\NetworkingTutorial\Projekt\NetworkingTutorial\Build_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
 Platform assembly: F:\Private Projekte\NetworkingTutorial\Projekt\NetworkingTutorial\Build_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading F:\Private Projekte\NetworkingTutorial\Projekt\NetworkingTutorial\Build_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.032 seconds
+- Completed reload, in  0.024 seconds
 Platform assembly: F:\Private Projekte\NetworkingTutorial\Projekt\NetworkingTutorial\Build_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: F:\Private Projekte\NetworkingTutorial\Projekt\NetworkingTutorial\Build_Data\Managed\System.dll (this message is harmless)
 desktop: 1920x1080 60Hz; virtual: 3840x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.009658 ms
+UnloadTime: 1.290233 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: fec -> priority: 1 
-  Thread -> id: 33c4 -> priority: 1 
+  Thread -> id: 16d8 -> priority: 1 
+  Thread -> id: 3268 -> priority: 1 
